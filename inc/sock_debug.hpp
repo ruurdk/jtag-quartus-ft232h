@@ -6,9 +6,9 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/socket.h>
+#include <winsock2.h>
 #include <sys/types.h>
-#include <sys/un.h>
+//#include <sys/un.h>
 #include <unistd.h>
 
 class SockDebug {
@@ -16,6 +16,7 @@ class SockDebug {
 
 public:
   explicit SockDebug(const char *path) {
+    /*
     _sock = socket(AF_UNIX, SOCK_DGRAM, 0);
     struct sockaddr_un addr;
     memset(&addr, 0, sizeof(addr));
@@ -27,13 +28,16 @@ public:
       // throw std::runtime_error("could not open socket");
       // TODO: check the effect on the program
     }
-
+    */
     debug_write("SockDebug is ready\n");
   }
 
-  ~SockDebug() { close(_sock); }
+  ~SockDebug() { 
+    //close(_sock); 
+  }
 
   void debug_write(const char *format, ...) {
+    /*
     char buf[4096];
 
     va_list arglist;
@@ -42,9 +46,11 @@ public:
     va_end(arglist);
 
     send(_sock, buf, strlen(buf), 0);
+    */
   }
 
   void mini_hexdump(void *ptr, unsigned int len) {
+    /*
     debug_write("mini_hexdump(ptr = %p)\n", ptr);
     uint8_t *p = (uint8_t *)ptr;
 
@@ -63,5 +69,6 @@ public:
     }
 
     debug_write("\n");
+    */
   }
 };

@@ -3,9 +3,9 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/socket.h>
+#include <winsock2.h>
 #include <sys/types.h>
-#include <sys/un.h>
+//#include <sys/un.h>
 #include <unistd.h>
 
 #include "jtag_tap_controller.hpp"

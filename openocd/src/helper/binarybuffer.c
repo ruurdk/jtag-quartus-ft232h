@@ -66,6 +66,21 @@ static const char hex_digits[] = {
 	'a', 'b', 'c', 'd', 'e', 'f'
 };
 
+char *strndup(const char *str, size_t chars)
+{
+    char *buffer;
+    int n;
+
+    buffer = (char *) malloc(chars +1);
+    if (buffer)
+    {
+        for (n = 0; ((n < chars) && (str[n] != 0)) ; n++) buffer[n] = str[n];
+        buffer[n] = 0;
+    }
+
+    return buffer;
+}
+
 void *buf_cpy(const void *from, void *_to, unsigned size)
 {
 	if (NULL == from || NULL == _to)
